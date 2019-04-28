@@ -1,3 +1,71 @@
-<p>
-  usuario-list works!
-</p>
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item active">Usuários</li>
+  </ol>  
+</nav>
+
+<div class="row">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">Usuários</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-right">
+      + Novo Usuário
+    </a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Nível Acesso</th>
+      <th>Código Hotel</th>
+      <th>Ações</th>
+    </tr>    
+  </thead>
+  <tbody>
+    <tr>
+      <td>Usuário1</td>
+      <td>usuário1@hotel.com.br</td>
+      <td>3</td>
+      <td>1</td>
+      <td>
+        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>     
+    </tr>   
+    <tr>
+      <td>Usuário2</td>
+      <td>usuário2@hotel.com.br</td>
+      <td>3</td>
+      <td>1</td>
+      <td>
+        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>     
+    </tr>
+    <tr>
+      <td>Usuário3</td>
+      <td>usuário3@hotel.com.br</td>
+      <td>3</td>
+      <td>1</td>
+      <td>
+        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>     
+    </tr>
+    <tr>
+      <td>Usuário4</td>
+      <td>usuário4@hotel.com.br</td>
+      <td>3</td>
+      <td>1</td>
+      <td>
+        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
+      </td>     
+    </tr>   
+  </tbody>
+</table>
