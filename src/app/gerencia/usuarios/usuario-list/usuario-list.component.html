@@ -27,45 +27,15 @@
     </tr>    
   </thead>
   <tbody>
-    <tr>
-      <td>Usuário1</td>
-      <td>usuário1@hotel.com.br</td>
-      <td>3</td>
-      <td>1</td>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{usuario.name}}</td>
+      <td>{{usuario.email}}</td>
+      <td>{{usuario.Nivel_Acesso}}</td>
+      <td>{{usuario.Codigo_Hotel}}</td>
       <td>
-        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+        <a [routerLink]="[usuario.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
         <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
       </td>     
-    </tr>   
-    <tr>
-      <td>Usuário2</td>
-      <td>usuário2@hotel.com.br</td>
-      <td>3</td>
-      <td>1</td>
-      <td>
-        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
-      </td>     
-    </tr>
-    <tr>
-      <td>Usuário3</td>
-      <td>usuário3@hotel.com.br</td>
-      <td>3</td>
-      <td>1</td>
-      <td>
-        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
-      </td>     
-    </tr>
-    <tr>
-      <td>Usuário4</td>
-      <td>usuário4@hotel.com.br</td>
-      <td>3</td>
-      <td>1</td>
-      <td>
-        <a [routerLink]="[1, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-        <button (click)="alert('excluir')" class="btn btn-outline-danger btn-sm">Excluir</button>
-      </td>     
-    </tr>   
+    </tr>     
   </tbody>
 </table>
