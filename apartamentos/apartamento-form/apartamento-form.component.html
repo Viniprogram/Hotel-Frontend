@@ -1,0 +1,142 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item"><a routerLink="/">Atendimento</a>  
+    <li class="breadcrumb-item"><a routerLink="/usuarios">Apartamentos</a>
+    <li class="breadcrumb-item active">{{pageTitle}}</li>
+  </ol>  
+</nav>
+
+<div class="row mb-4">   
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="/usuarios" class="btn btn-outline-primary btn-sm float-right">
+      <i class="material-icons">
+        fast_rewind
+        </i>
+      </a>
+  </div>
+</div>
+
+<form [formGroup]="userForm" (submit)="submitForm()">   
+    <div class="card">
+        <div class="card-header">
+          Informações sobre o apartamento
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-3">              
+                <label for="Codigo_Hotel">Código do Hotel</label>
+                <input type="number" class="form-control" id="Codigo_Hotel" formControlName="Codigo_Hotel" autofocus>        
+
+                <div class="text-danger" *ngIf="userForm.get('Codigo_Hotel').invalid && userForm.get('Codigo_Hotel').touched">
+                  <div *ngIf="userForm.get('Codigo_Hotel').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="userForm.get('Codigo_Hotel').errors.minlength">*campo deve ter no mínimo 1 caractere numérico.</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-md-3">
+                  <label for="Numero_Apartamento">Número do Apartamento</label>
+                  <input type="number" class="form-control" id="Numero_Apartamento" formControlName="Numero_Apartamento">        
+
+                <div class="text-danger" *ngIf="userForm.get('Numero_Apartamento').invalid && userForm.get('Numero_Apartamento').touched">
+                  <div *ngIf="userForm.get('Numero_Apartamento').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="userForm.get('Numero_Apartamento').errors.email">*campo deve ter no mínimo 1 caractere numérico.</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="Tipo_Apartamento">Tipo de Apartamento</label>
+                <select class="form-control" id="Tipo_Apartamento" formControlName="Tipo_Apartamento">
+                    <option>Casal</option>
+                    <option>Solteiro</option>
+                </select>                      
+
+              <div class="text-danger" *ngIf="userForm.get('Tipo_Apartamento').invalid && userForm.get('Tipo_Apartamento').touched">
+                <div *ngIf="userForm.get('Tipo_Apartamento').errors.required">*campo obrigatório.</div>                
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="Tipo_Acomodacao">Tipo de Acomodação</label>
+                <select class="form-control" id="Tipo_Acomodacao" formControlName="Tipo_Acomodacao">
+                    <option>Standard</option>
+                    <option>Suíte</option>
+                    <option>Luxo</option>
+                </select>                      
+
+              <div class="text-danger" *ngIf="userForm.get('Tipo_Acomodacao').invalid && userForm.get('Tipo_Acomodacao').touched">
+                <div *ngIf="userForm.get('Tipo_Acomodacao').errors.required">*campo obrigatório.</div>                
+              </div>
+            </div>            
+
+            <div class="form-group col-md-3">
+                  <label for="Quantidade_Cama">Quantidade de Camas</label>
+                  <input type="number" class="form-control" id="Quantidade_Cama" formControlName="Quantidade_Cama">
+                
+                <div class="text-danger" *ngIf="userForm.get('Quantidade_Cama').invalid && userForm.get('Quantidade_Cama').touched">
+                  <div *ngIf="userForm.get('Quantidade_Cama').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="userForm.get('Quantidade_Cama').errors.minlength">*campo deve ter no mínimo 1 caractere numérico.</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="TV" value="TV">
+                  <label class="form-check-label" for="TV">TV</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Frigobar" value="Frigobar">
+                  <label class="form-check-label" for="Frigobar">Frigobar</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Banheira" value="Banheira">
+                  <label class="form-check-label" for="Banheira">Banheira</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="Escrivaninha" value="Escrivaninha">
+                  <label class="form-check-label" for="Escrivaninha">Escrivaninha</label>
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+                  <label for="Nivel_Acesso">Nível Acesso</label>
+                  <input type="number" class="form-control" id="Nivel_Acesso" formControlName="Nivel_Acesso">            
+
+                <div class="text-danger" *ngIf="userForm.get('Nivel_Acesso').invalid && userForm.get('Nivel_Acesso').touched">
+                  <div *ngIf="userForm.get('Nivel_Acesso').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="userForm.get('Nivel_Acesso').errors.minlength">*campo deve ter no mínimo 1 caractere numérico.</div>
+                </div>
+           </div>
+
+          <div class="form-group col-md-3">
+                  <label for="Codigo_Hotel">Código Hotel</label>
+                  <input type="number" class="form-control" id="Codigo_Hotel" formControlName="Codigo_Hotel">          
+          
+                <div class="text-danger" *ngIf="userForm.get('Codigo_Hotel').invalid && userForm.get('Codigo_Hotel').touched">
+                  <div *ngIf="userForm.get('Codigo_Hotel').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="userForm.get('Codigo_Hotel').errors.minlength">*campo deve ter no mínimo 1 caractere numérico.</div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+      <strong>Erro no servidor:</strong>
+      <ul>
+        <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+      </ul>
+    </div>
+
+      <button [disabled]="submittingForm || userForm.invalid" type="submit" class="btn btn-outline-primary float-right mt-3">
+          Salvar
+      </button>
+    </form>
+
+    

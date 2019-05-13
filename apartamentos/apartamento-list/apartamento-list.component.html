@@ -1,0 +1,56 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item active"><a routerLink="/">Atendimento</a>
+    <li class="breadcrumb-item active">Apartamentos</li>
+  </ol>  
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">Apartamentos</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-right">
+      + Novo Apartamento
+    </a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Número</th>
+      <th>Tipo Apartamento</th>
+      <th>Tipo Acomodação</th>
+      <th>Quantidade Camas</th>
+      <th>Ocupado</th>
+      <th>Valor Diária</th>
+      <th>Código Hóspede</th>      
+    </tr>    
+  </thead>
+ <!-- <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{usuario.name}}</td>
+      <td>{{usuario.email}}</td>
+      <td>{{usuario.Nivel_Acesso}}</td>
+      <td>{{usuario.Codigo_Hotel}}</td>
+      <td>
+        <a [routerLink]="[usuario.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">
+          <i class="material-icons">
+            edit
+          </i>
+        </a>
+        <button (click)="deleteUsuario(usuario)" class="btn btn-default btn-outline-danger btn-sm">
+          <i class="material-icons">
+            delete
+          </i>
+        </button>
+      </td>     
+    </tr>     
+  </tbody>-->
+</table>
+
