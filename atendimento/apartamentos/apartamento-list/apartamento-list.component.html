@@ -1,0 +1,69 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item active"><a routerLink="/">Atendimento</a>
+    <li class="breadcrumb-item active">Apartamentos</li>
+  </ol>  
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">Apartamentos</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-right">
+      + Novo Apartamento
+    </a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Número</th>
+      <th class="text-center">Tipo</th>
+      <th class="text-center">Tipo Acomodação</th>
+      <th class="text-center">Qtde.Camas</th>
+      <th>TV</th>
+      <th>Frigobar</th>
+      <th>Banheira</th>
+      <th>Escrivaninha</th>
+      <th>Ocupado</th>
+      <th class="text-center">Valor Diária</th>            
+      <th class="text-center">Ações</th>            
+    </tr>    
+  </thead>
+  <tbody>
+    <tr *ngFor="let apartamento of apartamentos">      
+      <td class="text-center">{{apartamento.Numero_Apartamento}}</td>
+      <td class="text-center">{{apartamento.Tipo_Apartamento}}</td>
+      <td class="text-center">{{apartamento.Tipo_Acomodacao}}</td>
+      <td class="text-center">{{apartamento.Quantidade_Cama}}</td>
+      <td class="text-center">{{apartamento.TV}}</td>
+      <td class="text-center">{{apartamento.Frigobar}}</td>
+      <td class="text-center">{{apartamento.Banheira}}</td>
+      <td class="text-center">{{apartamento.Escrivaninha}}</td>
+      <td class="text-center">{{apartamento.Ocupado}}</td>
+      <td class="text-right">{{apartamento.Valor_Diaria}}</td>      
+      <td>
+        <button [routerLink]="[apartamento.id, 'reserva']" [disabled]="apartamento.Ocupado == 'S'" class="btn btn-outline-secondary float-right">
+              Reservar
+        </button>
+       <!-- <a [routerLink]="[apartamento.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">
+          <i class="material-icons">
+            edit
+          </i>
+        </a>
+        <button (click)="deleteApartamento(apartamento)" class="btn btn-default btn-outline-danger btn-sm">
+          <i class="material-icons">
+            delete
+          </i>
+        </button>-->
+      </td>     
+    </tr>     
+  </tbody>
+</table>
+

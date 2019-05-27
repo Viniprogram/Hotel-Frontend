@@ -1,0 +1,207 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item"><a routerLink="/">Atendimento</a>
+    <li class="breadcrumb-item"><a routerLink="/hospedes">Hóspedes</a>
+    <li class="breadcrumb-item active">{{pageTitle}}</li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md-11">
+    <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md-1">
+    <a routerLink="/hospedes" class="btn btn-outline-primary btn-sm float-right">
+      <i class="material-icons">
+        fast_rewind
+      </i>
+    </a>
+  </div>
+</div>
+
+<form [formGroup]="hospedeForm" (submit)="submitForm()">
+  <div class="card">
+    <div class="card-header">
+      Informações sobre o hóspede
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-5">
+          <label for="Nome_Hospede">Nome do Hóspede</label>
+          <input type="text" class="form-control" id="Nome_Hospede" formControlName="Nome_Hospede" autofocus>
+
+          <div class="text-danger"
+            *ngIf="hospedeForm.get('Nome_Hospede').invalid && hospedeForm.get('Nome_Hospede').touched">
+            <div *ngIf="hospedeForm.get('Nome_Hospede').errors.required">*campo obrigatório.</div>
+            <div *ngIf="hospedeForm.get('Nome_Hospede').errors.minlength">*preencher com o nome completo.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="Data_Nascimento">Data de Nascimento</label>
+         <input type="text" class="form-control" id="Data_Nascimento" formControlName="Data_Nascimento">
+         <!--  <p-calendar id="Data_Nascimento" formControlName="Data_Nascimento" inputStyleClass="form-control"
+            dataType="string" dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true">
+          </p-calendar>-->
+
+          <div class="text-danger"
+            *ngIf="hospedeForm.get('Data_Nascimento').invalid && hospedeForm.get('Data_Nascimento').touched">
+            <div *ngIf="hospedeForm.get('Data_Nascimento').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="CPF">CPF</label>
+          <input type="text" class="form-control" id="CPF" formControlName="CPF">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('CPF').invalid && hospedeForm.get('CPF').touched">
+            <div *ngIf="hospedeForm.get('CPF').errors.required">*Campo obrigatório. Deve ser digitado apenas números
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="RG">Número de Identidade</label>
+          <input type="text" class="form-control" id="RG" formControlName="RG">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('RG').invalid && hospedeForm.get('RG').touched">
+            <div *ngIf="hospedeForm.get('RG').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="Endereco">Endereço</label>
+          <input type="text" class="form-control" id="Endereco" formControlName="Endereco">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('Endereco').invalid && hospedeForm.get('Endereco').touched">
+            <div *ngIf="hospedeForm.get('Endereco').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-1">
+          <label for="Numero">Número</label>
+          <input type="text" class="form-control" id="Numero" formControlName="Numero">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('Numero').invalid && hospedeForm.get('Numero').touched">
+            <div *ngIf="hospedeForm.get('Endereco').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="Complemento">Complemento</label>
+          <input type="text" class="form-control" id="Complemento" formControlName="Complemento">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="Bairro">Bairro</label>
+          <input type="text" class="form-control" id="Bairro" formControlName="Bairro">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('Bairro').invalid && hospedeForm.get('Bairro').touched">
+            <div *ngIf="hospedeForm.get('Bairro').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="Cidade">Cidade</label>
+          <input type="text" class="form-control" id="Cidade" formControlName="Cidade">
+
+          <div class="text-danger" *ngIf="hospedeForm.get('Cidade').invalid && hospedeForm.get('Cidade').touched">
+            <div *ngIf="hospedeForm.get('Cidade').errors.required">*campo obrigatório.</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="UF">Estado</label>
+          <select class="form-control" name="UF" id="UF" formControlName="UF">
+            <option value="Selecione...">Selecione ...</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="GO">Goiás</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí­</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SP">São Paulo</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>              
+          </select>                      
+
+        <div class="text-danger" *ngIf="hospedeForm.get('UF').invalid && hospedeForm.get('UF').touched">
+          <div *ngIf="hospedeForm.get('UF').errors.required">*campo obrigatório.</div>                               
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="CEP">CEP</label>
+        <input type="text" class="form-control" id="CEP" formControlName="CEP">
+
+        <div class="text-danger" *ngIf="hospedeForm.get('CEP').invalid && hospedeForm.get('CEP').touched">
+          <div *ngIf="hospedeForm.get('CEP').errors.required">*campo obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="Telefone">Telefone</label>
+        <input type="text" class="form-control" id="Telefone" formControlName="Telefone">        
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="Celular">Celular</label>
+        <input type="text" class="form-control" id="Celular" formControlName="Celular">
+
+        <div class="text-danger" *ngIf="hospedeForm.get('Celular').invalid && hospedeForm.get('Celular').touched">
+          <div *ngIf="hospedeForm.get('Celular').errors.required">*campo obrigatório.</div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="Email">E-mail</label>
+        <input type="text" class="form-control" id="Email" formControlName="Email">        
+
+        <div class="text-danger" *ngIf="hospedeForm.get('Email').invalid && hospedeForm.get('Email').touched">
+          <div *ngIf="hospedeForm.get('Email').errors.required">*campo obrigatório.</div>
+          <div *ngIf="hospedeForm.get('Email').errors.email">*e-mail deve ser informado corretamente.</div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="Empresa">Empresa</label>
+        <input type="text" class="form-control" id="Empresa" formControlName="Empresa">
+      </div>          
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+    <strong>Erro no servidor:</strong>
+    <ul>
+      <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+    </ul>
+  </div>
+
+  <button [disabled]="submittingForm || hospedeForm.invalid" type="submit" class="btn btn-outline-primary float-right mt-3">    
+    Salvar
+  </button>
+</form>
+
+ <!--<pre>{{hospedeForm.value | json}}</pre>-->

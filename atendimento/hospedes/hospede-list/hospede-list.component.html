@@ -1,0 +1,58 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item active"><a routerLink="/">Atendimento</a>
+    <li class="breadcrumb-item active">Hóspedes</li>
+  </ol>  
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">Hóspedes</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-right">
+      + Novo Hóspede
+    </a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-primary text-light">
+      <th>Nome</th>
+      <th>CPF</th>      
+      <th>Cidade</th>
+      <th>UF</th>      
+      <th>Celular</th>
+      <th>E-mail</th>                  
+      <th>Ações</th>                  
+    </tr>    
+  </thead>
+  <tbody>
+    <tr *ngFor="let hospede of hospedes">      
+      <td>{{hospede.Nome_Hospede}}</td>
+      <td>{{hospede.CPF}}</td>     
+      <td>{{hospede.Cidade}}</td>
+      <td>{{hospede.UF}}</td>      
+      <td>{{hospede.Celular}}</td>      
+      <td>{{hospede.Email}}</td>      
+      <td>
+        <a [routerLink]="[hospede.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">
+          <i class="material-icons">
+            edit
+          </i>
+        </a>
+        <button (click)="deleteHospede(hospede)" class="btn btn-default btn-outline-danger btn-sm">
+          <i class="material-icons">
+            delete
+          </i>
+        </button>
+      </td>     
+    </tr>     
+  </tbody>
+</table>
+

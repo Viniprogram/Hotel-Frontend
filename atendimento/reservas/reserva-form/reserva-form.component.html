@@ -1,0 +1,87 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a>
+    <li class="breadcrumb-item"><a routerLink="/">Atendimento</a>  
+    <li class="breadcrumb-item"><a routerLink="/apartamentos">Apartamentos</a>
+    <li class="breadcrumb-item"><a routerLink="/apartamentos">Reserva</a>
+    <li class="breadcrumb-item active">{{pageTitle}}</li>
+  </ol>  
+</nav>
+
+<div class="row mb-4">   
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="/apartamentos" class="btn btn-outline-primary btn-sm float-right">
+      <i class="material-icons">
+        fast_rewind
+        </i>
+      </a>
+  </div>
+</div>
+
+<form [formGroup]="reservaForm" (submit)="submitForm()">   
+    <div class="card">
+        <div class="card-header">
+          Informações sobre a reserva
+        </div>
+        <div class="card-body">
+          <div class="form-row">            
+            <div class="form-group col-md-2">
+                  <label for="Numero_Apartamento">Nº Apartamento</label>
+                  <input type="number" class="form-control" id="Numero_Apartamento" formControlName="Numero_Apartamento">        
+
+                <div class="text-danger" *ngIf="reservaForm.get('Numero_Apartamento').invalid && reservaForm.get('Numero_Apartamento').touched">
+                  <div *ngIf="reservaForm.get('Numero_Apartamento').errors.required">*campo obrigatório.</div>
+                  <div *ngIf="reservaForm.get('Numero_Apartamento').errors.email">*campo deve ter no mínimo 1 caractere numérico maior que zero.</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="Codigo_Hospede">Nome do Hóspede</label>
+                <select class="form-control" name="Codigo_Hospede "id="Codigo_Hospede" formControlName="Codigo_Hospede">
+                    <option *ngFor="let hospede of hospedes" [value]="hospede.id">{{ hospede.Nome_Hospede }}</option>                    
+                </select>                      
+
+              <div class="text-danger" *ngIf="reservaForm.get('Codigo_Hospede').invalid && reservaForm.get('Codigo_Hospede').touched">
+                <div *ngIf="reservaForm.get('Codigo_Hospede').errors.required">*campo obrigatório.</div>                               
+              </div>
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="Inicio_Hospedagem">Início da Hospedagem</label>               
+                <input class="form-control" type="date" id="Inicio_Hospedagem" formControlName="Inicio_Hospedagem">
+
+                <div class="text-danger" *ngIf="reservaForm.get('Inicio_Hospedagem').invalid && reservaForm.get('Inicio_Hospedagem').touched">
+                    <div *ngIf="reservaForm.get('Inicio_Hospedagem').errors.required">*campo obrigatório.</div>                    
+                </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="Fim_Hospedagem">Fim da Hospedagem</label>              
+              <input class="form-control" type="date" id="Fim_Hospedagem" formControlName="Fim_Hospedagem">
+
+              <div class="text-danger" *ngIf="reservaForm.get('Fim_Hospedagem').invalid && reservaForm.get('Fim_Hospedagem').touched">
+                  <div *ngIf="reservaForm.get('Fim_Hospedagem').errors.required">*campo obrigatório.</div>                 
+              </div>
+            </div>          
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+      <strong>Erro no servidor:</strong>
+      <ul>
+        <li *ngFor="let error of serverErrorMessages">{{error}}</li>
+      </ul>
+    </div>
+
+      <button [disabled]="submittingForm || reservaForm.invalid" type="submit" class="btn btn-outline-primary float-right mt-3">
+          Reservar
+      </button>
+    </form>
+
+   <!-- <pre>{{reservaForm.value | json}}</pre>-->
